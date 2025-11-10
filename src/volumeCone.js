@@ -7,3 +7,8 @@
 module.exports.volumeCone = function volumeCone(h, r) {
   throw new Error('Not implemented');
 };
+function volumeCone(radius, height) {
+  return (1 / 3) * Math.PI * radius * radius * height;
+}
+
+console.log(volumeCone(3, 5)); // Ожидаем: примерно 47.12
