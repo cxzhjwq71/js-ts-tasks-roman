@@ -11,3 +11,14 @@
 module.exports.formatAddressWithOrder = function formatAddressWithOrder(order) {
   throw new Error('Not implemented'); // remove me and write a solution
 };
+module.exports.formatAddressWithOrder = function formatAddressWithOrder(address, order) {
+  let result = [];
+  for (let key of order) {
+    result.push(address[key]);
+  }
+  return result.join(', ');
+};
+
+// тест
+const address = { street: 'Main St 12', city: 'Brussels', zip: '1000', country: 'Belgium' };
+console.log(module.exports.formatAddressWithOrder(address, ['country', 'zip', 'city', 'street']));
