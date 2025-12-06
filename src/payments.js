@@ -4,24 +4,31 @@
  *
  * income is an Object that may look like:
  * {
- *   salary: 100, // person's salary
- *   investment: 200, // person's income he gets from investment activities
+ *   salary: 100,
+ *   investment: 200,
  * }
  *
  * debts is an Object that may look like:
  * {
- *   rent: 50, // how much a person should pay for renting a flat/house/etc
- *   food: 25, // how much a person will spend on food
+ *   rent: 50,
+ *   food: 25,
  * }
  *
- * At the end after calculation all person's money we will have: 100 + 200 - 50 - 25 = 225, that's a final answer
+ * At the end after calculation all person's money we will have: 100 + 200 - 50 - 25 = 225
  *
- * Note: You MUST use a function sumAllObjectProperties from TestUtils object that will calculate all object numeric properties
+ * Note: You MUST use a function sumAllObjectProperties from TestUtils object
  * Note: DON'T require/import TestUtils from a test/testUtils
  *
  * @param {{ sumAllObjectProperties: function() }} TestUtils
  * @returns {function}
  */
-module.exports.payments = function payments(TestUtils) {
-  throw new Error('Not implemented'); // remove this line and create your solution
-};
+function payments(TestUtils) {
+  return function (incomes = {}, expenses = {}) {
+    // ВАЖНО: вызываем с контекстом incomes и expenses
+    const totalIncome = TestUtils.sumAllObjectProperties.call(incomes);
+    const totalExpenses = TestUtils.sumAllObjectProperties.call(expenses);
+    return totalIncome - totalExpenses;
+  };
+}
+
+module.exports.payments = payments;

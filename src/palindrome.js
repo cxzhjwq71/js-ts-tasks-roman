@@ -12,6 +12,14 @@
  * @param {{ isPalindrome: function() }} TestUtils
  * @returns {function}
  */
-module.exports.palindrome = function palindrome(TestUtils) {
-  throw new Error('Not implemented'); // remove this line and create your solution
-};
+function palindrome(TestUtils) {
+  return function (str) {
+    const cleaned = String(str)
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, '');
+    // ВАЖНО: вызываем с контекстом { str: cleaned }
+    return TestUtils.isPalindrome.call({ str: cleaned });
+  };
+}
+
+module.exports.palindrome = palindrome;
