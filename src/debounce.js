@@ -1,15 +1,15 @@
 function debounce(fn, delay) {
-  let timeout = null;
+    let timeout = null;
 
-  return function (...args) {
-    if (timeout) return;
+    return function (...args) {
+        if (timeout) return;
 
-    timeout = setTimeout(() => {
-      timeout = null;
-    }, delay);
+        timeout = setTimeout(() => {
+            timeout = null;
+        }, delay);
 
-    fn.apply(this, args);
-  };
+        fn.apply(this, args);
+    };
 }
 
 module.exports = { debounce };
